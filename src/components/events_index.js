@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash'
 import { Link } from 'react-router-dom';
-
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import FloatingActionButton from './FloatingActionButton';
 import { readEvents } from '../actions'
+
+const EventsNewLink = props => <Link to="events/new" {...props} />
 
 class EventsIndex extends Component {
 
@@ -12,34 +15,34 @@ class EventsIndex extends Component {
   }
   renderEvents() {
     return _.map(this.props.events, event => (
-      <tr key={event.id}>
-        <td>{event.id}</td>
-        <td>
+      <TableRow key={event.id}>
+        <TableCell>{event.id}</TableCell>
+        <TableCell>
           <Link to={`/events/${event.id}`}>
             {event.title}
           </Link>
-        </td>
-        <td>{event.body}</td>
-      </tr>
+        </TableCell>
+        <TableCell>{event.body}</TableCell>
+      </TableRow>
     ))
   }
 
   render() {
     return (
       <React.Fragment>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Body</th>
-            </tr>
-          </thead>
-          <tbody>
+        <FloatingActionButton component={EventsNewLink} />
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Title</TableCell>
+              <TableCell>Body</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {this.renderEvents()}
-          </tbody>
-        </table>
-        <Link to="events/new">New Event</Link>
+          </TableBody>
+        </Table>
       </React.Fragment>
     )
   }
