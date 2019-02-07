@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash'
 import { Link } from 'react-router-dom';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
-import FloatingActionButton from './FloatingActionButton';
+import FloatingActionButton from './floating_action_button';
 import { readEvents } from '../actions'
 
 const EventsNewLink = props => <Link to="events/new" {...props} />

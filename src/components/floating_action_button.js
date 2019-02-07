@@ -13,16 +13,11 @@ const styles = theme => ({
   },
 });
 
-function FloatingActionButton(props) {
-  const { classes } = props;
-  return (
-    <div>
-      <Fab color="primary" aria-label="Add" className={classes.fab} component={props.component}>
-        <AddIcon />
-      </Fab>
-    </div>
-  );
-}
+const FloatingActionButton = ({ classes, component }) => (
+  <Fab color="primary" aria-label="Add" className={classes.fab} component={component}>
+    <AddIcon />
+  </Fab>
+)
 
 FloatingActionButton.propTypes = {
   classes: PropTypes.object.isRequired,
