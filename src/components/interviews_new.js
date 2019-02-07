@@ -25,7 +25,7 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2,
     [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
       marginTop: theme.spacing.unit * 6,
-      marginBottom: theme.spacing.unit * 6,
+      marginBottom: theme.spacing.unit * 1,
       padding: theme.spacing.unit * 3,
     },
   },
@@ -91,7 +91,7 @@ class InterviewsNew extends Component {
             // className: classes.menu,
           },
         }}
-        helperText="回答形式を選択して下さい"
+        helperText={touched && error}
         margin="normal"
       >
         {formats.map(format => (
@@ -117,8 +117,9 @@ class InterviewsNew extends Component {
         <main className={classes.layout}>
           <Paper className={classes.paper}>
             <Field label="質問" name="questionText" type="text" component={this.renderField} />
-            <Field label="回答形式" name="answerFormats" type="select" component={this.renderSelect} />
+            <Field label="回答形式" name="answerFormat" type="select" component={this.renderSelect} />
           </Paper>
+          <Button >設問を追加</Button>
         </main>
         <Button variant="contained" type="submit" style={style} disabled={pristine || submitting || invalid} >submit</Button>
         <Button variant="contained" style={style} component={Link} to="/" >cancel</Button>
